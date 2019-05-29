@@ -1,5 +1,7 @@
 # CodeLab
 
+[![CircleCI](https://circleci.com/gh/mcaleb808/codeLab.svg?style=svg)](https://circleci.com/gh/mcaleb808/codeLab) [![Maintainability](https://api.codeclimate.com/v1/badges/ebc1747f46d5bf197fa2/maintainability)](https://codeclimate.com/github/mcaleb808/codeLab/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/ebc1747f46d5bf197fa2/test_coverage)](https://codeclimate.com/github/mcaleb808/codeLab/test_coverage)
+
 ## Setup
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
