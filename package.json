@@ -5,7 +5,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "jest"
+    "test": "jest --coverage --forceExit --detectOpenHandles",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "test:coverage": "npm run test -- -u && npm run coveralls"
   },
   "dependencies": {
     "@expo/samples": "2.1.1",
