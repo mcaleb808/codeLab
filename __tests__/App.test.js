@@ -4,7 +4,7 @@ import App from "../App";
 import renderer from "react-test-renderer";
 
 describe("App snapshot", () => {
-  it("renders the loading screen", async () => {
+  it("renders the app", async () => {
     const tree = renderer.create(<App />).toJSON();
     expect(tree).toMatchSnapshot();
   });
