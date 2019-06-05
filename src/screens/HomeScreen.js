@@ -52,7 +52,7 @@ export default class HomeScreen extends React.Component {
     return (
       <SafeAreaView>
         <Header
-          backgroundColor={"#F8F8F8"}
+          backgroundColor={"#00BFFF"}
           centerComponent={{
             text: "Developers",
             style: styles.Header
@@ -60,7 +60,7 @@ export default class HomeScreen extends React.Component {
         />
         <View style={styles.content}>
           {loading ? (
-            <ActivityIndicator size="large" color="#1F2A34" />
+            <ActivityIndicator size="large" color="#00BFFF" />
           ) : (
             <FlatList
               data={this.state.data}
@@ -69,10 +69,15 @@ export default class HomeScreen extends React.Component {
                 <ListItem
                   roundAvatar
                   title={item.login}
+                  titleStyle={styles.title}
                   key={item.id}
                   containerStyle={styles.list}
                   rightIcon={
-                    <Ionicons name="ios-arrow-forward" size={18} color="#ccc" />
+                    <Ionicons
+                      name="ios-arrow-forward"
+                      size={18}
+                      color="#81d4fa"
+                    />
                   }
                 />
               )}
@@ -94,12 +99,15 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   Header: {
-    color: "#1F2A34",
+    color: "#fff",
     fontSize: 20,
     fontWeight: "bold"
   },
   list: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: "#ccc"
+    borderColor: "#00BFFF"
+  },
+  title: {
+    color: "#0091ea"
   }
 });
