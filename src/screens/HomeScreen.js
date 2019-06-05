@@ -18,8 +18,6 @@ export default class HomeScreen extends React.Component {
     page: 1
   };
 
-  arrayholder = [];
-
   componentDidMount() {
     this.handleRequest();
   }
@@ -36,8 +34,6 @@ export default class HomeScreen extends React.Component {
           error: res.message || null,
           loading: false
         });
-
-        this.arrayholder = res.items;
       })
       .catch(error => {
         this.setState({ error, loading: false });

@@ -4,5 +4,7 @@ module.exports = {
   collectCoverage: true,
   coverageReporters: ["json", "lcov", "text", "clover"],
   coverageDirectory: "coverage",
-  verbose: true
+  verbose: true,
+  automock: false,
+  setupFiles: ["./jest/setup.js"]
 };

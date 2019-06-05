@@ -8,3 +8,4 @@ npm-debug.*
 .env
 coverage
 yarn.lock
+ios
