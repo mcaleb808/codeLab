@@ -3,12 +3,14 @@ import renderer from "react-test-renderer";
 import HomeScreen from "../../src/screens/HomeScreen";
 import data from "../../src/__mocks__/data";
 
+console.error = jest.fn();
+
 describe("HomeScreen", () => {
   const tree = renderer.create(<HomeScreen />);
-  const findElement = type => tree.root.findAllByType(type);
   test("renders correctly", () => {
     expect(tree.toJSON()).toMatchSnapshot();
   });
+
   test("should should render with empty data", () => {
     let homeData = tree.getInstance();
     expect(homeData.state.data).toBeDefined();
@@ -23,11 +25,6 @@ describe("HomeScreen", () => {
     tree.update();
     expect(homeData.state.data).toHaveLength(3);
   });
-  //   test("should render one list", () => {
-  //     const usersList = findElement("RCTScrollView");
-  //     expect(usersList.length).toBe(1);
-  //     expect(usersList[0].props.onEndReachedThreshold).toEqual(0);
-  //   });
 
   describe("tests functions", () => {
     const tree = renderer.create(<HomeScreen />);
