@@ -5,3 +5,9 @@ npm-debug.*
 *.p12
 *.key
 *.mobileprovision
+.env
+coverage
+ios
+yarn.lock
+__tests__/__snapshots__/*
+__tests__/screens/__snapshots__/*
