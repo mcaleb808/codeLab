@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-  StyleSheet,
   Text,
   View,
   Image,
@@ -10,6 +9,7 @@ import {
 } from "react-native";
 import { Header } from "react-native-elements";
 import { SimpleLineIcons, Ionicons } from "@expo/vector-icons";
+import styles from "./profileStyles";
 
 export default class Profile extends Component {
   state = {
@@ -37,6 +37,7 @@ export default class Profile extends Component {
           error: res.message || null,
           loading: false
         });
+        console.log(this.state.profile);
       })
       .catch(error => {
         this.setState({ error: error });
@@ -50,21 +51,52 @@ export default class Profile extends Component {
     Linking.openURL(url);
   };
 
+  renderHeader = () => {
+    return (
+      <Header
+        backgroundColor={"#0091ea"}
+        leftComponent={() => (
+          <TouchableOpacity onPress={this.toHome}>
+            <Ionicons name="md-home" size={30} color="#fff" />
+          </TouchableOpacity>
+        )}
+        centerComponent={{
+          text: "Profile",
+          style: styles.top
+        }}
+      />
+    );
+  };
+
+  renderBody = () => {
+    return (
+      <View style={styles.body}>
+        <View style={styles.bodyContent}>
+          <Text style={styles.name}>{this.state.profile.name}</Text>
+          <Text style={styles.info}>
+            <Text>{this.state.profile.followers} Followers -</Text>
+            <Text> {this.state.profile.public_repos} Repositories</Text>
+          </Text>
+          <Text style={styles.info}>
+            <Text>{this.state.profile.following} Following -</Text>
+            <Text> 0 Stars</Text>
+          </Text>
+          <TouchableOpacity
+            onPress={this.toGitHub}
+            style={styles.buttonContainer}
+          >
+            <Text style={styles.buttonText}>Go to GitHub</Text>
+          </TouchableOpacity>
+          <SimpleLineIcons name="share-alt" size={50} color="#0091ea" />
+        </View>
+      </View>
+    );
+  };
+
   render() {
     return (
       <SafeAreaView>
-        <Header
-          backgroundColor={"#0091ea"}
-          leftComponent={() => (
-            <TouchableOpacity onPress={this.toHome}>
-              <Ionicons name="md-home" size={30} color="#fff" />
-            </TouchableOpacity>
-          )}
-          centerComponent={{
-            text: "Profile",
-            style: styles.top
-          }}
-        />
+        {this.renderHeader()}
         <View style={styles.container}>
           <Image
             source={{
@@ -72,90 +104,9 @@ export default class Profile extends Component {
             }}
             style={styles.header}
           />
-          <View style={styles.body}>
-            <View style={styles.bodyContent}>
-              <Text style={styles.name}>{this.state.profile.name}</Text>
-              <Text style={styles.info}>
-                <Text>{this.state.profile.followers} Followers -</Text>
-                <Text> {this.state.profile.public_repos} Repositories</Text>
-              </Text>
-              <Text style={styles.info}>
-                <Text>{this.state.profile.following} Following -</Text>
-                <Text> 0 Stars</Text>
-              </Text>
-              <TouchableOpacity
-                onPress={this.toGitHub}
-                style={styles.buttonContainer}
-              >
-                <Text style={styles.buttonText}>Go to GitHub</Text>
-              </TouchableOpacity>
-              <SimpleLineIcons name="share-alt" size={50} color="#0091ea" />
-            </View>
-          </View>
+          {this.renderBody()}
         </View>
       </SafeAreaView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: "#00BFFF",
-    height: 320,
-    margin: 3
-  },
-  avatar: {
-    width: 130,
-    height: 130,
-    borderRadius: 63,
-    borderWidth: 4,
-    borderColor: "white",
-    marginBottom: 10,
-    alignSelf: "center",
-    position: "absolute",
-    marginTop: 130
-  },
-  top: {
-    color: "#fff",
-    fontSize: 20,
-    fontWeight: "bold"
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold"
-  },
-  body: {
-    marginTop: 2
-  },
-  bodyContent: {
-    alignItems: "center",
-    padding: 30
-  },
-  name: {
-    fontSize: 20,
-    color: "#0091ea",
-    fontWeight: "600"
-  },
-  info: {
-    fontSize: 16,
-    color: "#696969",
-    margin: 15,
-    alignItems: "center"
-  },
-  buttonContainer: {
-    marginTop: 10,
-    height: 45,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 20,
-    width: 250,
-    borderRadius: 8,
-    backgroundColor: "#0091ea"
-  },
-  bar: {
-    position: "absolute",
-    right: 0
-  }
-});
