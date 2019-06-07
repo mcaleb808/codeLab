@@ -15,6 +15,8 @@ const props = {
   }
 };
 
+console.error = jest.fn();
+
 describe("ProfileScreen", () => {
   const tree = renderer.create(<ProfileScreen {...props} />);
   test("renders correctly", () => {
@@ -45,7 +47,6 @@ describe("tests functions", () => {
         items: profileData
       })
     );
-    console.log(profileInstance);
     await profileInstance.componentDidMount();
     profileInstance.getProfile = jest.fn();
     tree.update();
