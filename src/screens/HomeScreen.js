@@ -52,7 +52,7 @@ export default class HomeScreen extends React.Component {
     return (
       <SafeAreaView>
         <Header
-          backgroundColor={"#00BFFF"}
+          backgroundColor={"#0091ea"}
           centerComponent={{
             text: "Developers",
             style: styles.Header
@@ -67,7 +67,11 @@ export default class HomeScreen extends React.Component {
               keyExtractor={(item, index) => `${item.id}+ ${index}`}
               renderItem={({ item }) => (
                 <ListItem
-                  roundAvatar
+                  onPress={() =>
+                    this.props.navigation.navigate("Profile", {
+                      username: item.login
+                    })
+                  }
                   title={item.login}
                   titleStyle={styles.title}
                   key={item.id}
