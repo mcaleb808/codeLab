@@ -1,15 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { render } from "react-native-testing-library";
 import HomeScreen from "../../src/screens/HomeScreen";
-import {
-  StyleSheet,
-  SafeAreaView,
-  View,
-  FlatList,
-  ActivityIndicator,
-  ListItem
-} from "react-native";
 import data from "../../src/__mocks__/data";
 
 console.error = jest.fn();
